@@ -20,7 +20,7 @@ app.get('/', (c) => {
   return c.json({
     status: '✅ Bot Online',
     runtime: 'Bun + Hono + TypeScript',
-    version: Bun.version,
+    // version: Bun.version,
     // memory: `${Math.round(memory.heapUsed / 1024 / 1024)}MB`,
     // uptime: `${Math.round(process.uptime())}s`,
     sessions: flowService.getSessions().length

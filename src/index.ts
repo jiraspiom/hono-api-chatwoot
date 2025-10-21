@@ -27,40 +27,40 @@ app.get('/', (c) => {
   });
 });
 
-// // Webhook do Chatwoot
-// app.post('/webhook', async (c) => {
-//   try {
-//     const event = await c.req.json() as ChatwootEvent;
+// Webhook do Chatwoot
+app.post('/webhook', async (c) => {
+  try {
+    const event = await c.req.json() as ChatwootEvent;
     
-//     if (event.event === 'message_created' && event.message.message_type === 'incoming') {
-//       // Processa em background sem bloquear a resposta
-//       flowService.processMessage(event).catch(console.error);
-//     }
+    if (event.event === 'message_created' && event.message.message_type === 'incoming') {
+      // Processa em background sem bloquear a resposta
+      flowService.processMessage(event).catch(console.error);
+    }
     
-//     return c.text('OK');
-//   } catch (error) {
-//     console.error('❌ Erro no webhook:', error);
-//     return c.text('Erro interno', 500);
-//   }
-// });
+    return c.text('OK');
+  } catch (error) {
+    console.error('❌ Erro no webhook:', error);
+    return c.text('Erro interno', 500);
+  }
+});
 
-// // Status das sessões
-// app.get('/sessions', (c) => {
-//   const sessions = flowService.getSessions();
-//   return c.json({
-//     activeSessions: sessions.length,
-//     sessions
-//   });
-// });
+// Status das sessões
+app.get('/sessions', (c) => {
+  const sessions = flowService.getSessions();
+  return c.json({
+    activeSessions: sessions.length,
+    sessions
+  });
+});
 
-// // Limpar sessões
-// app.delete('/sessions', (c) => {
-//   const count = flowService.clearSessions();
-//   return c.json({
-//     message: `🧹 ${count} sessões removidas`,
-//     remaining: 0
-//   });
-// });
+// Limpar sessões
+app.delete('/sessions', (c) => {
+  const count = flowService.clearSessions();
+  return c.json({
+    message: `🧹 ${count} sessões removidas`,
+    remaining: 0
+  });
+});
 
 
 

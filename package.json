@@ -1,0 +1,13 @@
+{
+  "name": "chatwoot",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^4.10.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.6",
+    "@types/bun": "latest"
+  }
+}

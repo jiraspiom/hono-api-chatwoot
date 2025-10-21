@@ -4,13 +4,8 @@ import { FlowService } from './flowService';
 import type { ChatwootEvent } from './types.js';
 
 const app = new Hono()
-// const flowService = new FlowService();
+const flowService = new FlowService();
 
-app.get('/', (c) => {
-  return c.json({
-    status: '✅ Bot Online',
-  });
-});
 
 // Middleware CORS para ngrok
 app.use('*', cors());

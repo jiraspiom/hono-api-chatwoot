@@ -5,8 +5,8 @@ export class ChatwootService {
   private apiToken: string;
 
   constructor() {
-    this.baseURL = process.env.CHATWOOT_URL || 'https://seu-chatwoot.com';
-    this.apiToken = process.env.CHATWOOT_API_TOKEN || 'seu_token_aqui';
+    this.baseURL = process.env.CHATWOOT_URL || 'http://127.0.0.1:5500';
+    this.apiToken = process.env.CHATWOOT_API_TOKEN || 'Yr1NKgEN7LrjDMCkbq6rR735';
   }
 
   async sendMessage(accountId: number, conversationId: number, content: string): Promise<void> {

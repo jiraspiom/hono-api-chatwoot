@@ -12,27 +12,25 @@ app.get('/', (c) => {
   });
 });
 
-
-
-// // Middleware CORS para ngrok
-// app.use('*', cors());
-// app.use('*', async (c, next) => {
-//   console.log(`📨 ${c.req.method} ${c.req.path}`);
-//   await next();
-// });
+// Middleware CORS para ngrok
+app.use('*', cors());
+app.use('*', async (c, next) => {
+  console.log(`📨 ${c.req.method} ${c.req.path}`);
+  await next();
+});
 
 // // Health check
-// app.get('/', (c) => {
-//   const memory = process.memoryUsage();
-//   return c.json({
-//     status: '✅ Bot Online',
-//     runtime: 'Bun + Hono + TypeScript',
-//     version: Bun.version,
-//     memory: `${Math.round(memory.heapUsed / 1024 / 1024)}MB`,
-//     uptime: `${Math.round(process.uptime())}s`,
-//     sessions: flowService.getSessions().length
-//   });
-// });
+app.get('/', (c) => {
+  const memory = process.memoryUsage();
+  return c.json({
+    status: '✅ Bot Online',
+    runtime: 'Bun + Hono + TypeScript',
+    version: Bun.version,
+    memory: `${Math.round(memory.heapUsed / 1024 / 1024)}MB`,
+    uptime: `${Math.round(process.uptime())}s`,
+    // sessions: flowService.getSessions().length
+  });
+});
 
 // // Webhook do Chatwoot
 // app.post('/webhook', async (c) => {
